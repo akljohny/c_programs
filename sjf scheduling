@@ -1,0 +1,99 @@
+Adithyasjf.c
+Earlier this year
+Aug 31
+
+You shared an item
+C
+Adithyasjf.c
+A
+Can edit
+ADITHYA ANIL B.Tech CSE A 2017 - 2021
+Aug 31
+
+You uploaded an item
+C
+Adithyasjf.c
+#include <stdio.h>
+
+int main()
+{
+    int n,i,j,bt[20],wt[20],twt,awt,temp;
+    printf("Enter total number of processes: ");
+    scanf("%d", &n);
+    printf("Enter burst time for each process:\n");
+    for(i=0; i<n; i++) 
+    {
+        printf("P[%d]: ", i+1);
+        scanf("%d", &bt[i]);
+    }
+    
+    //waiting time
+    twt = 0;
+    wt[0]= 0;
+    for(i=0; i<n; i++) {
+        wt[i+1] = wt[i]+bt[i];
+        twt+= wt[i+1];
+    }
+
+    awt=twt/n;
+    printf("Average waiting time = %d\n",awt);
+	printf("Process\t\tBurst Time\t\tWaiting time\n");
+    for(i=0; i<n; i++) 
+    {
+        printf("P[%d]\t\t ", i+1);
+	printf("%d\t\t\t\t", bt[i]);
+	printf("%d\n", wt[i]);
+    }
+ /*   printf("\nWaiting Time\n");
+	for(i=0;i<n;i++)
+		printf("%d\t", wt[i]);
+	printf("\nBurst Time\n");
+	for(i=0;i<n;i++)
+		printf("%d\t", bt[i]);
+    printf("Gantt Chart:\n");*/
+	
+    return 0;
+}
+
+/*
+void print_gantt_chart(Process p[], int n)
+{
+    int i, j;
+    int last = p[n-1].burst_time + ( n== 1 ? 0 : p[n-1].waiting_time);
+    // printing top bar
+    printf(" ");
+    for(i=0; i<n; i++) {
+        for(j=0; j<p[i].burst_time; j++) printf("--");
+        printf(" ");
+    }
+    printf("\n|");
+    // middle position
+    for(i=0; i<n; i++) {
+        for(j=0; j<p[i].burst_time-1; j++) printf(" ");
+        printf("p%d", p[i].pid);
+        for(j=0; j<p[i].burst_time-1; j++) printf(" ");
+        printf("|");
+    }
+    printf("\n ");
+    // bottom bar
+    for(i=0; i<n; i++) {
+        for(j=0; j<p[i].burst_time; j++) printf("--");
+        printf(" ");
+    }
+    printf("\n");
+
+    // printing waiting time
+    int minus = 0;
+    for(i=0; i<n; i++) {
+        if(p[i].waiting_time>9) printf(" ");
+        printf("%d", p[i].waiting_time);
+        if(p[i+1].waiting_time>9){
+          minus = 1;
+        }
+        if(i+1 == n )  if (last>9) minus = 1;
+        for(j=0; j<p[i].burst_time-minus; j++) printf("  ");
+
+    }
+    if(last>9) printf(" ");
+    printf("%d\n", last);
+}*/
